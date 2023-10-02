@@ -24,7 +24,7 @@ public class DatCuocActivity extends AppCompatActivity {
     private TextView textViewBetMoney1;
     private TextView textViewBetMoney2;
     private TextView textViewBetMoney3;
-    private User[] users = {new User("user1", "password1", 100), new User("user2", "password2", 2000), new User("user3", "password3", 3000)};
+    private User[] users = {new User("user1", "password1", 50), new User("user2", "password2", 2000), new User("user3", "password3", 3000)};
     private int valueBetMoney = 10; // Coin Radio
     private int totalBetMoney = 0; // Tổng tiền cược
     public int getValueBet1 = 0;
