@@ -1,10 +1,10 @@
 package com.example.prm_teamproject_carracing;
 
-import static java.lang.Math.abs;
-
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     public int getValueBet1 = 0;
     public int getValueBet2 = 0;
     public int getValueBet3 = 0;
+    private List<String> winningHorses = new ArrayList<>();
+    private int profit = 0;
+    private int turn = 1;
     final AtomicInteger completedCount = new AtomicInteger(0); // Biến đếm công việc hoàn thành
 
     @Override
@@ -87,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         startRacing(); // Running
 
         startButton = findViewById(R.id.buttonPlayAgain_Start);
+        startButton.setEnabled(false);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 hasWinner = false;
                 // Đặt biến isStarted thành true khi bấm "Start"
                 isStarted = true;
+                startButton.setEnabled(false);
 
                 // Đặt giá trị Progress của SeekBar về 0 (hoặc giá trị mặc định)
                 seekBar1.setProgress(0);
@@ -105,14 +112,15 @@ public class MainActivity extends AppCompatActivity {
                     executorService.shutdownNow();
                 }
 
-                // Ẩn nút "Start"
                 int validateBet = getUserMoney - getValueBet1 - getValueBet2 - getValueBet3;
                 if (validateBet < 0) {
                     startButton.setEnabled(false);
                     Toast.makeText(MainActivity.this, "Số dư không đủ để cược", Toast.LENGTH_SHORT).show();
-                // Chuyển Layout
+                    textViewBetMoney1.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    textViewBetMoney2.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    textViewBetMoney3.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    // Chuyển Layout
                 } else {
-                    startRacing(); // Running
                     // Bắt đầu hoạt hình Thumb
                     thumbAnimation1.start();
                     thumbAnimation2.start();
@@ -121,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                     textViewBetMoney1.setBackgroundColor(getResources().getColor(android.R.color.transparent));
                     textViewBetMoney2.setBackgroundColor(getResources().getColor(android.R.color.transparent));
                     textViewBetMoney3.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    startRacing(); // Running
                 }
             }
         });
@@ -201,39 +210,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkCompletion() {
-//        Log.d("Horse", String.valueOf(completedCount));
         // Lấy số Tiền
-//        String[] parts = textViewMoneyUser.getText().toString().split("\\s|\\$");
-//        Log.d("Horse", "aaa " + parts[1]);
-        if (completedCount.incrementAndGet() == 2) { // Change to 3
-//            // Nếu tất cả công việc đã hoàn thành, hiển thị lại nút "Start"
-//            if (parts[1] == "0" ) {
-//                startButton.setEnabled(false);
-////                Toast.makeText(MainActivity.this, "Không đủ tiền", Toast.LENGTH_SHORT).show();
-//                Log.d("Horse", "bbb");
-////                runOnUiThread(new Runnable() {
-////                    @Override
-////                    public void run() {
-////                        Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-////                        // Pass Data to Result_Activity:
-////                        startActivity(intent);
-////
-////                    }
-////                });
-//            } else {
+        String[] parts = textViewMoneyUser.getText().toString().split("\\s|\\$");
+        Log.d("Horse", "a: " + parts[1]);
+        if (completedCount.incrementAndGet() == 2) { // Change to 2
+            completedCount.set(0); // Đặt lại biến đếm về 0 để sử dụng cho lần sau
+            // Nếu tất cả công việc đã hoàn thành, hiển thị lại nút "Start"
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     startButton.setEnabled(true);
                 }
             });
-//            }
-            // Dừng executorService nếu đang chạy
-            if (executorService != null && !executorService.isShutdown()) {
-                executorService.shutdownNow();
-            }
-            completedCount.set(0); // Đặt lại biến đếm về 0 để sử dụng cho lần sau
         }
+
+        // Dừng executorService nếu đang chạy
+        if (executorService != null && !executorService.isShutdown()) {
+            executorService.shutdownNow();
+        }
+        if (Integer.parseInt(parts[1]) <= 0) {
+            // Sử dụng runOnUiThread để chuyển đổi layout sau một đợi
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // Tạo một đợi (delay) 2 giây trước khi chuyển layout
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+                            // Pass Data to Result_Activity:
+                            intent.putStringArrayListExtra("winningHorses", new ArrayList<>(winningHorses));
+                            startActivity(intent);
+                        }
+                    }, 1000); // 1s
+                }
+            });
+        }
+
+
     }
 
     private void runFunction1() {
@@ -257,6 +271,10 @@ public class MainActivity extends AppCompatActivity {
                                     // Hiển thị thông báo SeekBar đã thắng
 //                                    Toast.makeText(MainActivity.this, "Ngựa ở vị trí số 1 đã thắng!", Toast.LENGTH_SHORT).show();
                                     textViewBetMoney1.setBackgroundColor(getColor(R.color.green));
+                                    profit = getValueBet1 - getValueBet2 - getValueBet3;
+                                    winningHorses.add("Turn " + turn + " [H1]: " + profit + "$");
+                                    turn++;
+                                    Log.d("Horse", "Turn " + turn + " [H1]: " + profit + "$");
                                 }
                             });
                         } else {
@@ -305,6 +323,10 @@ public class MainActivity extends AppCompatActivity {
                                     // Hiển thị thông báo SeekBar đã thắng
 //                                    Toast.makeText(MainActivity.this, "Ngựa ở vị trí số 2 đã thắng!", Toast.LENGTH_SHORT).show();
                                     textViewBetMoney2.setBackgroundColor(getColor(R.color.green));
+                                    profit = getValueBet2 - getValueBet1 - getValueBet3;
+                                    winningHorses.add("Turn " + turn + " [H2]: " + profit + "$");
+                                    turn++;
+                                    Log.d("Horse", "Turn " + turn + " [H2]: " + profit + "$");
                                 }
                             });
                         } else {
@@ -353,6 +375,10 @@ public class MainActivity extends AppCompatActivity {
                                     // Hiển thị thông báo SeekBar đã thắng
 //                                    Toast.makeText(MainActivity.this, "Ngựa ở vị trí số 3 đã thắng!", Toast.LENGTH_SHORT).show();
                                     textViewBetMoney3.setBackgroundColor(getColor(R.color.green));
+                                    profit = getValueBet3 - getValueBet1 - getValueBet2;
+                                    winningHorses.add("Turn " + turn + " [H3]: " + profit + "$");
+                                    turn++;
+                                    Log.d("Horse", "Turn " + turn + " [H3]: " + profit + "$");
                                 }
                             });
                         } else {

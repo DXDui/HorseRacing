@@ -64,10 +64,12 @@
 
     <TextView
         android:id="@+id/textViewMoney2"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="20dp"
         android:layout_marginTop="20dp"
         android:text="0$"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/textViewBackground2"
         app:layout_constraintStart_toStartOf="@+id/textViewBackground2"
@@ -137,10 +139,12 @@
 
     <TextView
         android:id="@+id/textViewMoney3"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="20dp"
         android:layout_marginTop="20dp"
         android:text="0$"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/textViewBackground3"
         app:layout_constraintHorizontal_bias="0.536"
@@ -165,10 +169,12 @@
 
     <TextView
         android:id="@+id/textViewMoney1"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="20dp"
         android:layout_marginTop="20dp"
         android:text="0$"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/textViewBackground1"
         app:layout_constraintStart_toStartOf="@+id/textViewBackground1"
