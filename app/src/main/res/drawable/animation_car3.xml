@@ -1,0 +1,9 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/car3_3" android:duration="300" />
+    <item android:drawable="@drawable/car3_4" android:duration="300" />
+    <item android:drawable="@drawable/car3_1" android:duration="300" />
+    <item android:drawable="@drawable/car3_2" android:duration="300" />
+
+    <!-- Thêm các frame khác tương ứng với các giá trị SeekBar
+      android:width="10dp" android:height="10dp -->
+</animation-list>

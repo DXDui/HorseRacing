@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageViewResults"
+        android:layout_width="455dp"
+        android:layout_height="213dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mov1" />
+
+    <Button
+        android:id="@+id/buttonPlayAgain"
+        android:layout_width="155dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="44dp"
+        android:text="PLAY AGAIN"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewResults" />
+</androidx.constraintlayout.widget.ConstraintLayout>

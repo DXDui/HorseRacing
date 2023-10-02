@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="327dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:text="MAKE YOUR BET"
+        android:textAlignment="center"
+        android:textColor="#F44336"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewBackground1"
+        android:layout_width="160dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="24dp"
+        android:background="#00BCD4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+    <TextView
+        android:id="@+id/textViewBackground2"
+        android:layout_width="160dp"
+        android:layout_height="230dp"
+        android:layout_marginTop="24dp"
+        android:background="#00BCD4"
+        app:layout_constraintEnd_toStartOf="@+id/textViewBackground3"
+        app:layout_constraintStart_toEndOf="@+id/textViewBackground1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageViewAvatar2"
+        android:layout_width="106dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBackground2"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="@+id/textViewBackground2"
+        app:layout_constraintTop_toTopOf="@+id/textViewBackground2"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewMoney2"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:text="0$"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBackground2"
+        app:layout_constraintStart_toStartOf="@+id/textViewBackground2"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAvatar2"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonDown1"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="13dp"
+        android:backgroundTint="#F44336"
+        android:text="-"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewBackground1"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBackground1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonUp1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMoney1"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <Button
+        android:id="@+id/buttonDown2"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="13dp"
+        android:backgroundTint="#F44336"
+        android:text="-"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewBackground2"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBackground2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonUp2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMoney2"
+        app:layout_constraintVertical_bias="0.357"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonUp2"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#4CAF50"
+        android:text="+"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewBackground2"
+        app:layout_constraintStart_toStartOf="@+id/textViewBackground2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMoney2"
+        app:layout_constraintVertical_bias="0.185"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewBackground3"
+        android:layout_width="160dp"
+        android:layout_height="230dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:background="#00BCD4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewMoney3"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:text="0$"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBackground3"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="@+id/textViewBackground3"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAvatar3"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonDown3"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#F44336"
+        android:text="-"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewBackground3"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBackground3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonUp3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMoney3"
+        app:layout_constraintVertical_bias="0.574"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewMoney1"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:text="0$"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBackground1"
+        app:layout_constraintStart_toStartOf="@+id/textViewBackground1"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAvatar1"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonUp1"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#4CAF50"
+        android:text="+"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewBackground1"
+        app:layout_constraintStart_toStartOf="@+id/textViewBackground1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMoney1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonUp3"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#4CAF50"
+        android:text="+"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewBackground3"
+        app:layout_constraintStart_toStartOf="@+id/textViewBackground3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMoney3"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageViewAvatar1"
+        android:layout_width="106dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBackground1"
+        app:layout_constraintStart_toStartOf="@+id/textViewBackground1"
+        app:layout_constraintTop_toTopOf="@+id/textViewBackground1"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageViewAvatar3"
+        android:layout_width="106dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBackground3"
+        app:layout_constraintStart_toStartOf="@+id/textViewBackground3"
+        app:layout_constraintTop_toTopOf="@+id/textViewBackground3"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/buttonBetDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="DONE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBackground2" />
+
+    <TextView
+        android:id="@+id/textViewMoneyUser"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:text="Money: 0$"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:text="Coin Ratio: 10$"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMoneyUser" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
